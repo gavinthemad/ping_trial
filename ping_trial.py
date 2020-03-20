@@ -51,4 +51,3 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
 print('average loss: ' + str(mean(avg_loss_list)))
 print('average delay: ' + str(mean(avg_delay_list)))
 
-avg_loss_list
