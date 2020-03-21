@@ -10,7 +10,7 @@ avg_loss = 0
 loss_100 = 0
 
 def ping(ip):
-    ping_cmd = str('ping ' + str(ip) + ' -c 20 -q')
+    ping_cmd = str('ping ' + str(ip) + ' -c 60 -q')
     stream = os.popen(ping_cmd)
     stream_as_string = stream.read()
     all_times_list = re.findall('[0-9.]+/[0-9.]+/[0-9.]+/[0-9.]+', stream_as_string)
@@ -48,6 +48,11 @@ ip_list = list(dict.fromkeys(ip_list))
 with concurrent.futures.ThreadPoolExecutor() as executor:
     executor.map(ping, ip_list)
 
-print('average loss: ' + str(mean(avg_loss_list)))
-print('average delay: ' + str(mean(avg_delay_list)))
+ 
+#print('average loss: ' + str(mean(avg_loss_list)))
+#print('average delay: ' + str(mean(avg_delay_list)))
 
+print('average losses:')
+print(*avg_loss_list, sep = "\n")
+print('\naverage delay:')
+print(*avg_delay_list, sep = "\n")
