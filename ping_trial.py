@@ -44,15 +44,14 @@ ip_list = re.findall('[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+', stream.read())
 ip_list = list(dict.fromkeys(ip_list))
 
 
+print('ip addresses:')
+print(*ip_list, sep = "\n")
 
 with concurrent.futures.ThreadPoolExecutor() as executor:
     executor.map(ping, ip_list)
 
  
-#print('average loss: ' + str(mean(avg_loss_list)))
-#print('average delay: ' + str(mean(avg_delay_list)))
-
-print('average losses:')
+print('\naverage losses:')
 print(*avg_loss_list, sep = "\n")
 print('\naverage delay:')
 print(*avg_delay_list, sep = "\n")
