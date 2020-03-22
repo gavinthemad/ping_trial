@@ -36,11 +36,13 @@ def ping(ip):
         
 
     
-traceroute_cmd = str('traceroute -n ' + str(sys.argv[1]))
+#traceroute_cmd = str('traceroute -n ' + str(sys.argv[1]))
 
-stream = os.popen(traceroute_cmd)
+#stream = os.popen(traceroute_cmd)
 
-ip_list = re.findall('[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+', stream.read())
+#ip_list = re.findall('[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+', stream.read())
+ip_list = sys.argv
+ip_list.remove(ip_list[0])
 ip_list = list(dict.fromkeys(ip_list))
 
 
